@@ -1,0 +1,6 @@
+1,Pastor Aleman,0,true
+2,Bullterier,0,true
+3,Bulldog,0,true
+4,Bullterrier,1,true
+5,Bullterrier2,1,true
+6,Bullterrier3,1,true
