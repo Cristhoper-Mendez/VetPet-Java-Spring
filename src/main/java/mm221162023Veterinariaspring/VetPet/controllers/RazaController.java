@@ -5,11 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.DeleteMapping;
 
 import mm221162023Veterinariaspring.VetPet.entidades.Raza;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioRaza;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioTipoPaciente;
 import mm221162023Veterinariaspring.VetPet.entidades.TipoPaciente;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class RazaController {
@@ -46,5 +50,15 @@ public class RazaController {
 
         return "redirect:razas";
     }
+    
+    @PostMapping("/delete-raza/{idRaza}")
+    @ResponseBody
+    public String DeleteRaza(@PathVariable("idRaza") int idRaza, Model model){
+        
+        sRaza.EliminarRaza(idRaza);
+        
+        return "razas";
+    }
 
+//    @ResponseBody
 }
