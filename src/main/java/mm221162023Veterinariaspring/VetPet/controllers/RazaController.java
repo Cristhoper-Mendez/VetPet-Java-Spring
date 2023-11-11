@@ -50,14 +50,16 @@ public class RazaController {
 
         return "redirect:razas";
     }
-    
+
     @PostMapping("/delete-raza/{idRaza}")
     @ResponseBody
-    public String DeleteRaza(@PathVariable("idRaza") int idRaza, Model model){
-        
+    public Object DeleteRaza(@PathVariable("idRaza") int idRaza, Model model) {
+
         sRaza.EliminarRaza(idRaza);
-        
-        return "razas";
+
+        return new Object() {
+            public final boolean success = true;
+        };
     }
 
 //    @ResponseBody

@@ -74,13 +74,26 @@
                                     url: url + id,
                                     dataType: "json",
                                     success: function (respuesta) {
-                                        console.log(respuesta);
+                                        if (respuesta.success) {
+                                            swal("La raza fue eliminada correctamente.", {
+                                                icon: "success"
+                                            }).then(() => {
+                                                window.location.reload();
+                                            });
+                                        }
+                                    },
+                                    error: function (e) {
+                                        swal("Algo salio mal en el servidor!!.", {
+                                            icon: "info"
+                                        });
+                                        console.log("ERROR: ", e);
+                                    },
+                                    done: function (e) {
+                                        console.log("DONE");
                                     }
                                 });
 
-                                swal("Poof! Your imaginary file has been deleted!", {
-                                    icon: "success"
-                                });
+
                             }
                         });
 
