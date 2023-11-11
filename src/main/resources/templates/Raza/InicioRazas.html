@@ -74,7 +74,7 @@
                                     url: url + id,
                                     dataType: "json",
                                     success: function (respuesta) {
-                                        if (respuesta.success) {
+                                        if (!respuesta.error) {
                                             swal("La raza fue eliminada correctamente.", {
                                                 icon: "success"
                                             }).then(() => {

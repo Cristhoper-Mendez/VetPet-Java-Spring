@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import mm221162023Veterinariaspring.VetPet.entidades.Raza;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioRaza;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioTipoPaciente;
-import mm221162023Veterinariaspring.VetPet.entidades.TipoPaciente;
+import mm221162023Veterinariaspring.VetPet.entidades.RespuestaEstandard;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -57,9 +57,7 @@ public class RazaController {
 
         sRaza.EliminarRaza(idRaza);
 
-        return new Object() {
-            public final boolean success = true;
-        };
+        return new RespuestaEstandard(false, "Eliminado correctamente.");
     }
 
 //    @ResponseBody
