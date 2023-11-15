@@ -60,5 +60,24 @@ public class RazaController {
         return new RespuestaEstandard(false, "Eliminado correctamente.");
     }
 
+    @GetMapping("/editar-raza/{idRaza}")
+    public String EditarRaza(@PathVariable("idRaza") int idRaza, Model model) {
+        Raza raza = sRaza.ObtenerRazaPorId(idRaza);
+        model.addAttribute("raza", raza);
+        
+        var lstTipoPacientes = sTipoPaciente.ObtenerTipoPacientesActivos();
+        model.addAttribute("tipoPacientes", lstTipoPacientes);
+
+        return "Raza/EditarRaza";
+    }
+    
+    @PostMapping("put-raza")
+    public String PutRaza(Raza ra, Model model){
+        
+        sRaza.ActualizarRaza(ra);
+        
+        return "redirect:razas";
+    }
+
 //    @ResponseBody
 }

@@ -3,5 +3,7 @@
 3,Bulldog,0,false
 4,Bullterrier,1,true
 5,Bullterrier2,1,false
-6,Bullterrier3,1,true
+6,Bullterrier editado 2,1,true
 7,Pitbull,1,true
+8,Pastor Aleman,0,false
+9,Pastor Aleman 2,1,false
