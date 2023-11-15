@@ -1,4 +1,6 @@
-package mm221162023Veterinariaspring.VetPet.entidades;
+package mm221162023Veterinariaspring.VetPet.utilidades;
+
+
 
 public class RespuestaEstandard {
     private boolean error;

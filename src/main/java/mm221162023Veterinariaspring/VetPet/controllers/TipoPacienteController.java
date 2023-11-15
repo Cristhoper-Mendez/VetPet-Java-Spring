@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import mm221162023Veterinariaspring.VetPet.entidades.TipoPaciente;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioTipoPaciente;
-import mm221162023Veterinariaspring.VetPet.entidades.RespuestaEstandard;
+import mm221162023Veterinariaspring.VetPet.utilidades.RespuestaEstandard;
 
 @Controller
 public class TipoPacienteController {
