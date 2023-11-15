@@ -35,8 +35,8 @@
                                 Mas Opciones
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/vetpet/razas">Raza</a></li>
-                                <li><a class="dropdown-item" href="/vetpet/tipo-pacientes">Tipo de Paciente</a></li>
+                                <li><a class="dropdown-item" href="#">Raza</a></li>
+                                <li><a class="dropdown-item" href="#">Tipo de Paciente</a></li>
                                 <li><a class="dropdown-item" href="#">Vacuna</a></li>
                             </ul>
                         </li>
@@ -51,30 +51,28 @@
                 <a class="btn btn-primary" th:href="@{/crear-raza}">Crear Raza</a>
             </div>
 
-            <div th:if="${razas != null and !razas.empty}">
+            <div th:if="${tipoPacientes != null and !tipoPacientes.empty}">
                 <table class="table table-stryped">
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>
                             <th >Nombre</th>
-                            <th >Tipo Paciente</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="raza, contador : ${razas}">
+                        <tr th:each="tipo, contador : ${tipoPacientes}">
                             <td>[[${contador.count}]]</td>
-                            <td>[[${raza.nombreRaza}]]</td>
-                            <td>[[${raza.tipoPaciente}]]</td>
+                            <td>[[${tipo.nombreTipoPaciente}]]</td>
                             <td> 
                                 <a  
-                                    th:href="@{/editar-raza/} + ${raza.razaId}"
+                                    th:href="@{/editar-tipo-paciente/} + ${tipo.IdTipoPaciente}"
                                     class="btn btn-secondary btn-edit-raza">
                                     <i class="fas fa-angle-double-right"></i> Editar
                                 </a>
                                 <a 
-                                    th:attr="data-id=${raza.razaId}"
-                                    class="btn btn-danger btn-delete-raza">
+                                    th:attr="data-id=${tipo.IdTipoPaciente}"
+                                    class="btn btn-danger btn-delete-tipo-paciente">
 
                                     <i class="fas fa-angle-double-right"></i> Eliminar
                                 </a>
