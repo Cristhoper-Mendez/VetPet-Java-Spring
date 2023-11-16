@@ -24,5 +24,21 @@ public class TipoPacienteController {
         
         return "TipoPaciente/InicioTipoPaciente";
     }
+    
+    @GetMapping("/crear-tipo-paciente")
+    public String CrearTipoPaciente(Model model){
+        TipoPaciente tipoPaciente = new TipoPaciente();
+        model.addAttribute("tipoPaciente", tipoPaciente);
+        
+        return "TipoPaciente/CrearTipoPaciente";
+    }
 
+    @PostMapping("/post-tipo-paciente")
+    public String PostTipoPaciente(TipoPaciente tp, Model model){
+        tp.setActivo(true);
+        
+        sTipoPaciente.CrearTipoPaciente(tp);
+        
+        return "redirect:tipo-pacientes";
+    }
 }

@@ -74,7 +74,7 @@ public class ServicioTipoPaciente implements ITipoPacienteServicio {
             }
 
             tipoPaciente.setIdTipoPaciente(id);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo, true))) {
                 String str = tipoPaciente.toString();
                 writer.write(str);
                 writer.newLine();
