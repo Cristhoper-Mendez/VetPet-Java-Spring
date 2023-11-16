@@ -10,6 +10,7 @@ import mm221162023Veterinariaspring.VetPet.entidades.TipoPaciente;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioTipoPaciente;
 import mm221162023Veterinariaspring.VetPet.utilidades.RespuestaEstandard;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class TipoPacienteController {
@@ -55,5 +56,15 @@ public class TipoPacienteController {
         sTipoPaciente.ActualizarTipoPaciente(tp);
 
         return "redirect:tipo-pacientes";
+    }
+    
+    @PostMapping("/delete-tipo-paciente/{idTipoPaciente}")
+    @ResponseBody()
+    public RespuestaEstandard DeleteTipoPaciente(@PathVariable("idTipoPaciente") int idTipoPaciente, Model model){
+        sTipoPaciente.EliminarTipoPaciente(idTipoPaciente);
+        
+        RespuestaEstandard res = new RespuestaEstandard(false, "Eliminado correctamente.");
+        
+        return res;
     }
 }
