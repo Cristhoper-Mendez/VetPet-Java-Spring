@@ -19,9 +19,9 @@
                     <label class="form-label" for="nombreTipoPaciente" >Nombre del Tipo de Paciente</label>    
                     <input type="text" class="form-control" id="nombreTipoPaciente" th:field="*{nombreTipoPaciente}" />
                 </div>            
-                
-                <input type="submit" title="Guardar" value="Guardar" class="btn btn-primary" />
-                <a class="btn btn-secondary" href="/tipo-pacientes">Regresar</a>
+
+                <a class="btn btn-secondary" th:href="@{/tipo-pacientes}">Regresar</a>
+                <input type="submit" title="Guardar" value="Guardar" class="btn btn-primary" />                
             </form>
         </div>
     </body>
