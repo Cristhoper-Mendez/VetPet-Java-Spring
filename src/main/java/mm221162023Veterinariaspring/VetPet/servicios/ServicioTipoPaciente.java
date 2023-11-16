@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import mm221162023Veterinariaspring.VetPet.entidades.TipoPaciente;
 import mm221162023Veterinariaspring.VetPet.interfaces.ITipoPacienteServicio;
+import mm221162023Veterinariaspring.VetPet.utilidades.InicializarArchivo;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +21,8 @@ public class ServicioTipoPaciente implements ITipoPacienteServicio {
         String directoryName = System.getProperty("user.dir");
         directoryName = directoryName + "\\src\\main\\java\\mm221162023Veterinariaspring\\VetPet\\archivos\\TipoPaciente.txt";
 
+         InicializarArchivo.InicializarArchivo(directoryName);
+        
         this.archivo = directoryName;
     }
 

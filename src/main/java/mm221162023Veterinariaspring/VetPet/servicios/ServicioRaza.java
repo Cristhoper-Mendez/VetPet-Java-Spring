@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import mm221162023Veterinariaspring.VetPet.entidades.Raza;
 import mm221162023Veterinariaspring.VetPet.interfaces.IRazaServicio;
+import mm221162023Veterinariaspring.VetPet.utilidades.InicializarArchivo;
 
 @Service
 public class ServicioRaza implements IRazaServicio {
@@ -19,6 +20,8 @@ public class ServicioRaza implements IRazaServicio {
     public ServicioRaza() {
         String directoryName = System.getProperty("user.dir");
         directoryName = directoryName +"\\src\\main\\java\\mm221162023Veterinariaspring\\VetPet\\archivos\\Razas.txt";
+        
+        InicializarArchivo.InicializarArchivo(directoryName);
         
         this.archivo = directoryName;
     }
