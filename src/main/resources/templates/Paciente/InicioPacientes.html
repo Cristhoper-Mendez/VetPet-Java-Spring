@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="_layout">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="container mt-2" layout:fragment="content">
+            <h1>Mantenimiento de Pacientes</h1>
+
+            <div class="mb-2">
+                <a class="btn btn-primary" th:href="@{/crear-paciente}">Crear Paciente</a>
+            </div>
+
+            <div th:if="${pacientes != null and !pacientes.empty}">
+                <table class="table table-stryped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th >Nombre</th>
+                            <th>Dueño</th>
+                            <th>Edad</th>
+                            <th>Sexo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="paciente, contador : ${pacientes}">
+                            <td>[[${contador.count}]]</td>
+                            <td>[[${tipo.nombrePaciente}]]</td>
+                            <td>[[${tipo.nombreDueño}]]</td>
+                            <td>[[${tipo.edadPaciente}]]</td>
+                            <td>[[${tipo.sexo ? 'Masculino' : 'Femenino'}]]</td>
+                            <td> 
+                                <a  
+                                    th:href="@{/editar-paciente/} + ${tipo.idPaciente}"
+                                    class="btn btn-secondary btn-edit-raza">
+                                    <i class="fas fa-angle-double-right"></i> Editar
+                                </a>
+                                <a 
+                                    th:attr="data-id=${tipo.idPaciente}"
+                                    class="btn btn-danger btn-delete-tipo-paciente">
+
+                                    <i class="fas fa-angle-double-right"></i> Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <th:block layout:fragment="script">
+            <script th:src="@{/js/tipopaciente.js}"></script>
+        </th:block>
+    </body>
+</html>

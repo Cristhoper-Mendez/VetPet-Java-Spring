@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="_layout">
+    <head>
+        <title>VetPet - Editar Paciente</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="container mt-2" layout:fragment="content"><h1>Crear Tipo de Paciente</h1>'
+            <form th:action="@{/post-paciente}" method="POST" th:object="${paciente}">
+                <div class="mb-3">
+                    <label class="form-label" for="nombrePaciente" >Nombre del Paciente</label>    
+                    <input type="text" class="form-control" id="nombrePaciente" th:field="*{nombrePaciente}" />
+                </div>            
+
+                <div class="mb-3">
+                    <label class="form-label" for="nombreDueño" >Nombre del Dueño</label>    
+                    <input type="text" class="form-control" id="nombreDueño" th:field="*{nombreDueño}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="edadPaciente" >Edad del Paciente</label>    
+                    <input type="number" min="1" class="form-control" id="edadPaciente" th:field="*{edadPaciente}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="razas" >Raza del Paciente</label>    
+                    <select class="form-select"  th:field="*{razas}">
+                        <option disabled="true" value="0">Seleccione una opcion</option>
+
+                        <option th:each="raza : ${razas}" th:value="${raza.razaId}" th:text="${raza.nombreRaza}" ></option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="fechaInscripcion" >Sexo del Paciente</label>    
+                    <select class="form-select"  th:field="*{sexo}">
+                        <option value="true">Macho</option>
+
+                        <option value="false">Hembra</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="medidas" >Medidas del Paciente</label>    
+                    <input type="text" class="form-control" id="medidas" th:field="*{medidas}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="numeroIdentificacion" >Numero de Identificacion del Paciente</label>    
+                    <input type="text" class="form-control" id="numeroIdentificacion" th:field="*{numeroIdentificacion}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="pelajePaciente" >Pelaje del Paciente</label>    
+                    <input type="text" class="form-control" id="pelajePaciente" th:field="*{pelajePaciente}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="fechaNacimiento" >Fecha de Nacimiento del Paciente</label>    
+                    <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" />
+                </div>
+
+                <a class="btn btn-secondary" th:href="@{/pacientes}">Regresar</a>
+                <input type="submit" title="Guardar" value="Guardar" class="btn btn-primary" />                
+            </form>
+        </div>
+    </body>
+</html>

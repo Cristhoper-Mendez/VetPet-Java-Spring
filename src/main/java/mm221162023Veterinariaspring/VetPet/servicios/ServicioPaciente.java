@@ -9,13 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 import mm221162023Veterinariaspring.VetPet.entidades.Paciente;
 import mm221162023Veterinariaspring.VetPet.interfaces.IPacienteServicio;
+import mm221162023Veterinariaspring.VetPet.utilidades.InicializarArchivo;
 
 public class ServicioPaciente implements IPacienteServicio {
 
     String archivo;
 
-    public ServicioPaciente(String archivo) {
-        this.archivo = archivo;
+    public ServicioPaciente() {
+        String directoryName = System.getProperty("user.dir");
+        directoryName = directoryName + "\\src\\main\\java\\mm221162023Veterinariaspring\\VetPet\\archivos\\Pacientes.txt";
+
+        InicializarArchivo.InicializarArchivo(directoryName);
+
+        this.archivo = directoryName;
     }
 
     @Override

@@ -3,7 +3,8 @@ package mm221162023Veterinariaspring.VetPet.entidades;
 import java.time.LocalDate;
 
 public class Paciente {
-      int idPaciente;
+
+    int idPaciente;
     String nombrePaciente;
     String nombreDueño;
     double edadPaciente;
