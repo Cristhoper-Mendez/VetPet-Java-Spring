@@ -58,7 +58,7 @@ public class ServicioUsuario implements IUsuarioServicio {
             }
 
             usuario.setIdUsuario(id);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo, true))) {
                 writer.write(usuario.toString());
                 writer.newLine();
             }

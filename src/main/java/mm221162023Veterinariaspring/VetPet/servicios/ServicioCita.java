@@ -79,7 +79,7 @@ public class ServicioCita implements ICitaServicio {
                 id = LstCitas.get(size - 1).getIdCita() + 1;
             }
             cita.setIdCita(id);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo, true))) {
                 writer.write(cita.toString());
                 writer.newLine();
             }

@@ -57,7 +57,7 @@ public class ServicioVacunas implements IVacunaServicio {
             }
 
             vacunas.setIdVacuna(id);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo, true))) {
                 writer.write(vacunas.toString());
                 writer.newLine();
             }
