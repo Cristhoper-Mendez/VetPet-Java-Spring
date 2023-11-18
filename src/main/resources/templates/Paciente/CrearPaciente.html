@@ -21,27 +21,18 @@
                 </div>            
 
                 <div class="mb-3">
-                    <label class="form-label" for="nombreDueño" >Nombre del Dueño</label>    
-                    <input type="text" class="form-control" id="nombreDueño" th:field="*{nombreDueño}" />
+                    <label class="form-label" for="nombreDueno" >Nombre del Dueño</label>    
+                    <input type="text" class="form-control" id="nombreDueno" th:field="*{nombreDueno}" />
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="edadPaciente" >Edad del Paciente</label>    
                     <input type="number" min="1" class="form-control" id="edadPaciente" th:field="*{edadPaciente}" />
-                </div>
+                </div>           
 
-<!--                <div class="mb-3">
-                    <label class="form-label" for="nombreDueño" >Tipo de Paciente</label>    
-                    <select class="form-select"  th:field="*{tipoPaciente}">
-                        <option disabled="true" value="0">Seleccione una opcion</option>
-
-                        <option th:each="tipo : ${tipoPacientes}" th:value="${tipo.IdTipoPaciente}" th:text="${tipo.nombreTipoPaciente}" ></option>
-                    </select>
-                </div>-->
-                
-                 <div class="mb-3">
-                    <label class="form-label" for="razas" >Raza del Paciente</label>    
-                    <select class="form-select"  th:field="*{razas}">
+                <div class="mb-3">
+                    <label class="form-label" for="razaId" >Raza del Paciente</label>    
+                    <select class="form-select"  th:field="*{razaId}">
                         <option disabled="true" value="0">Seleccione una opcion</option>
 
                         <option th:each="raza : ${razas}" th:value="${raza.razaId}" th:text="${raza.nombreRaza}" ></option>
@@ -71,11 +62,13 @@
                     <label class="form-label" for="pelajePaciente" >Pelaje del Paciente</label>    
                     <input type="text" class="form-control" id="pelajePaciente" th:field="*{pelajePaciente}" />
                 </div>
-                
+
                 <div class="mb-3">
                     <label class="form-label" for="fechaNacimiento" >Fecha de Nacimiento del Paciente</label>    
                     <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" />
                 </div>
+                
+                <!--<input th:field="fechaInscripcion" type="hidden"   />-->
 
                 <a class="btn btn-secondary" th:href="@{/pacientes}">Regresar</a>
                 <input type="submit" title="Guardar" value="Guardar" class="btn btn-primary" />                

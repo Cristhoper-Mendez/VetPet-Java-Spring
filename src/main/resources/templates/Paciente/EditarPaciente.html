@@ -11,16 +11,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-        <div class="container mt-2" layout:fragment="content"><h1>Crear Tipo de Paciente</h1>'
-            <form th:action="@{/post-paciente}" method="POST" th:object="${paciente}">
+        <div class="container mt-2" layout:fragment="content"><h1>Crear Tipo de Paciente</h1>
+            <form th:action="@{/put-paciente}" method="POST" th:object="${paciente}">
                 <div class="mb-3">
                     <label class="form-label" for="nombrePaciente" >Nombre del Paciente</label>    
                     <input type="text" class="form-control" id="nombrePaciente" th:field="*{nombrePaciente}" />
                 </div>            
 
                 <div class="mb-3">
-                    <label class="form-label" for="nombreDueño" >Nombre del Dueño</label>    
-                    <input type="text" class="form-control" id="nombreDueño" th:field="*{nombreDueño}" />
+                    <label class="form-label" for="nombreDueno" >Nombre del Dueño</label>    
+                    <input type="text" class="form-control" id="nombreDueno" th:field="*{nombreDueno}" />
                 </div>
 
                 <div class="mb-3">
@@ -29,8 +29,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="razas" >Raza del Paciente</label>    
-                    <select class="form-select"  th:field="*{razas}">
+                    <label class="form-label" for="razaId" >Raza del Paciente</label>    
+                    <select class="form-select"  th:field="*{razaId}">
                         <option disabled="true" value="0">Seleccione una opcion</option>
 
                         <option th:each="raza : ${razas}" th:value="${raza.razaId}" th:text="${raza.nombreRaza}" ></option>
@@ -65,6 +65,11 @@
                     <label class="form-label" for="fechaNacimiento" >Fecha de Nacimiento del Paciente</label>    
                     <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" />
                 </div>
+
+                <input type="hidden" th:field="*{idPaciente}" />
+                <input type="hidden" th:field="*{fechaInscripcion}" />
+                <input type="hidden" th:field="*{activo}" />
+                <!--<input type="hidden" th:field="@{idPaciente}" />-->
 
                 <a class="btn btn-secondary" th:href="@{/pacientes}">Regresar</a>
                 <input type="submit" title="Guardar" value="Guardar" class="btn btn-primary" />                

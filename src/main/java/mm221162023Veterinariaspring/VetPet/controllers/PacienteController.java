@@ -39,6 +39,7 @@ public class PacienteController {
     @GetMapping("/crear-paciente")
     public String CrearPaciente(Model model) {
         Paciente p = new Paciente();
+        p.setFechaInscripcion(LocalDate.now());
         model.addAttribute("paciente", p);
 
         var razas = sRaza.ObtenerRazasActivas();
@@ -57,7 +58,7 @@ public class PacienteController {
 
         p.setTipoPaciente(r.getTipoPaciente());
         p.setActivo(true);
-        p.setFechaNacimiento(LocalDate.now());
+        p.setFechaInscripcion(LocalDate.now());
 
         sPaciente.CrearPaciente(p);
 
@@ -66,7 +67,7 @@ public class PacienteController {
 
     @PostMapping("/delete-paciente/{idPaciente}")
     @ResponseBody()
-    public RespuestaEstandard DeletePaciente(@PathVariable("idRaza") int idPaciente, Model model) {
+    public RespuestaEstandard DeletePaciente(@PathVariable("idPaciente") int idPaciente, Model model) {
 
         sPaciente.EliminarPaciente(idPaciente);
         RespuestaEstandard res = new RespuestaEstandard(false, "Exitoso.");
@@ -75,10 +76,13 @@ public class PacienteController {
     }
 
     @GetMapping("/editar-paciente/{idPaciente}")
-    public String EditarPaciente(@PathVariable("idRaza") int idPaciente, Model model) {
+    public String EditarPaciente(@PathVariable("idPaciente") int idPaciente, Model model) {
 
         Paciente p = sPaciente.ObtenerPacientePorId(idPaciente);
         model.addAttribute("paciente", p);
+
+        var razas = sRaza.ObtenerRazasActivas();
+        model.addAttribute("razas", razas);
 
         return "Paciente/EditarPaciente";
     }

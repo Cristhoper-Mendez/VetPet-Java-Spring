@@ -1,12 +1,13 @@
 package mm221162023Veterinariaspring.VetPet.entidades;
 
 import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Paciente {
 
     int idPaciente;
     String nombrePaciente;
-    String nombreDueño;
+    String nombreDueno;
     double edadPaciente;
     int razaId;
     int tipoPaciente;
@@ -15,6 +16,7 @@ public class Paciente {
     String medidas;
     int numeroIdentificacion;
     String pelajePaciente;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate fechaNacimiento;
     boolean activo;
 
@@ -29,7 +31,7 @@ public class Paciente {
 
         this.idPaciente = Integer.parseInt(partes[0]);
         this.nombrePaciente = partes[1];
-        this.nombreDueño = partes[2];
+        this.nombreDueno = partes[2];
         this.edadPaciente = Double.parseDouble(partes[3]);
         this.razaId = Integer.parseInt(partes[4]);
         this.tipoPaciente = Integer.parseInt(partes[5]);
@@ -58,12 +60,12 @@ public class Paciente {
         this.nombrePaciente = nombrePaciente;
     }
 
-    public String getNombreDueño() {
-        return nombreDueño;
+    public String getNombreDueno() {
+        return nombreDueno;
     }
 
-    public void setNombreDueño(String nombreDueño) {
-        this.nombreDueño = nombreDueño;
+    public void setNombreDueno(String nombreDueno) {
+        this.nombreDueno = nombreDueno;
     }
 
     public double getEdadPaciente() {
@@ -156,7 +158,7 @@ public class Paciente {
 
     @Override
     public String toString() {
-        String str = this.idPaciente + "," + this.nombrePaciente + "," + this.nombreDueño + ","
+        String str = this.idPaciente + "," + this.nombrePaciente + "," + this.nombreDueno + ","
                 + this.edadPaciente + "," + this.razaId + "," + tipoPaciente
                 + "," + fechaInscripcion + "," + this.sexo + "," + this.medidas + ","
                 + this.numeroIdentificacion + "," + this.pelajePaciente + ","

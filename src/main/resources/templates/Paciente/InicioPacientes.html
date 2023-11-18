@@ -6,7 +6,7 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="_layout">
     <head>
-        <title>TODO supply a title</title>
+        <title>VetPet - Pacientes</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
@@ -33,19 +33,19 @@
                     <tbody>
                         <tr th:each="paciente, contador : ${pacientes}">
                             <td>[[${contador.count}]]</td>
-                            <td>[[${tipo.nombrePaciente}]]</td>
-                            <td>[[${tipo.nombreDueño}]]</td>
-                            <td>[[${tipo.edadPaciente}]]</td>
-                            <td>[[${tipo.sexo ? 'Masculino' : 'Femenino'}]]</td>
+                            <td>[[${paciente.nombrePaciente}]]</td>
+                            <td>[[${paciente.nombreDueno}]]</td>
+                            <td>[[${paciente.edadPaciente}]]</td>
+                            <td>[[${paciente.sexo ? 'Masculino' : 'Femenino'}]]</td>
                             <td> 
                                 <a  
-                                    th:href="@{/editar-paciente/} + ${tipo.idPaciente}"
+                                    th:href="@{/editar-paciente/} + ${paciente.idPaciente}"
                                     class="btn btn-secondary btn-edit-raza">
                                     <i class="fas fa-angle-double-right"></i> Editar
                                 </a>
                                 <a 
-                                    th:attr="data-id=${tipo.idPaciente}"
-                                    class="btn btn-danger btn-delete-tipo-paciente">
+                                    th:attr="data-id=${paciente.idPaciente}"
+                                    class="btn btn-danger btn-delete-paciente">
 
                                     <i class="fas fa-angle-double-right"></i> Eliminar
                                 </a>
@@ -54,10 +54,12 @@
                     </tbody>
                 </table>
             </div>
+            
+            <input id="url-delete" th:value="@{/delete-paciente/}" hidden />
         </div>
-
+        
         <th:block layout:fragment="script">
-            <script th:src="@{/js/tipopaciente.js}"></script>
+            <script th:src="@{/js/pacientes.js}"></script>
         </th:block>
     </body>
 </html>

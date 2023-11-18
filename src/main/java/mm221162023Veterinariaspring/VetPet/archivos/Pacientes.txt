@@ -1,0 +1,2 @@
+1,Kaiser,Cristhoper,2.0,7,1,2023-11-17,false,20 cm x 30cm,12345,Liso,2023-11-01,true
+2,Kaiser 2,crs,3.0,4,1,2023-11-17,true,20 cm x 30cm,45132,colocho xd,2023-10-04,false

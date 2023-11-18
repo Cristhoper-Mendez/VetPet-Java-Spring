@@ -10,7 +10,9 @@ import java.util.List;
 import mm221162023Veterinariaspring.VetPet.entidades.Paciente;
 import mm221162023Veterinariaspring.VetPet.interfaces.IPacienteServicio;
 import mm221162023Veterinariaspring.VetPet.utilidades.InicializarArchivo;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ServicioPaciente implements IPacienteServicio {
 
     String archivo;
@@ -79,7 +81,7 @@ public class ServicioPaciente implements IPacienteServicio {
             }
 
             paciente.setIdPaciente(id);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.archivo, true))) {
                 writer.write(paciente.toString());
                 writer.newLine();
             }
