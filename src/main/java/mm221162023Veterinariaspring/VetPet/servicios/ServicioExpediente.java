@@ -9,13 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 import mm221162023Veterinariaspring.VetPet.entidades.Expediente;
 import mm221162023Veterinariaspring.VetPet.interfaces.IExpedienteServicio;
+import mm221162023Veterinariaspring.VetPet.utilidades.InicializarArchivo;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ServicioExpediente implements IExpedienteServicio {
 
     String archivo;
 
-    public ServicioExpediente(String archivo) {
-        this.archivo = archivo;
+    public ServicioExpediente() {
+        String directoryName = System.getProperty("user.dir");
+        directoryName = directoryName + "\\src\\main\\java\\mm221162023Veterinariaspring\\VetPet\\archivos\\Expediente(.txt";
+
+        InicializarArchivo.InicializarArchivo(directoryName);
+
+        this.archivo = directoryName;
     }
 
     @Override

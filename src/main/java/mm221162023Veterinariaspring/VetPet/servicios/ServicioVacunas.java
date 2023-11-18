@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package mm221162023Veterinariaspring.VetPet.servicios;
 
 import java.io.BufferedReader;
@@ -13,17 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 import mm221162023Veterinariaspring.VetPet.entidades.Vacuna;
 import mm221162023Veterinariaspring.VetPet.interfaces.IVacunaServicio;
+import mm221162023Veterinariaspring.VetPet.utilidades.InicializarArchivo;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Cristhoper
- */
+@Service
 public class ServicioVacunas implements IVacunaServicio {
 
     String archivo;
 
-    public ServicioVacunas(String archivo) {
-        this.archivo = archivo;
+    public ServicioVacunas() {
+        String directoryName = System.getProperty("user.dir");
+        directoryName = directoryName + "\\src\\main\\java\\mm221162023Veterinariaspring\\VetPet\\archivos\\Vacunas.txt";
+
+        InicializarArchivo.InicializarArchivo(directoryName);
+        
+        this.archivo = directoryName;
     }
 
     @Override
