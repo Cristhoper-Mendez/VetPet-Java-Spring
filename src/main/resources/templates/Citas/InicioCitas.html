@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="_layout">
+    <head>
+        <title>VetPet - Citas</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body >
+        <div class="container mt-2" layout:fragment="content">  
+            <h1>Mantenimiento de Citas</h1>
+
+            <div class="mb-2">
+                <a class="btn btn-primary" th:href="@{/crear-cita}">Crear Cita</a>
+            </div>
+
+            <div th:if="${citas != null and !citas.empty}">
+                <table class="table table-stryped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>                            
+                            <th >Nombre Paciente</th>
+                            <th >Fecha Cita</th>
+                            <th >Motivo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cita, contador : ${citas}">
+                            <td>[[${contador.count}]]</td>
+                            <td>[[${cita.nombrePaciente}]]</td>
+                            <td>[[${cita.fechaCita}]]</td>
+                            <td>[[${cita.motivo}]]</td>
+                            <td> 
+                                <a  
+                                    th:href="@{/editar-cita/} + ${cita.idCita}"
+                                    class="btn btn-secondary btn-edit-raza">
+                                    <i class="fas fa-angle-double-right"></i> Editar
+                                </a>
+                                <a 
+                                    th:attr="data-id=${cita.idCita}"
+                                    class="btn btn-danger btn-delete-cita">
+
+                                    <i class="fas fa-angle-double-right"></i> Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <input id="url-delete" th:value="@{/delete-cita/}" hidden />
+        </div>
+
+        <th:block layout:fragment="script">
+            <script th:src="@{/js/citas.js}"></script>
+        </th:block>
+    </body>
+</html>
