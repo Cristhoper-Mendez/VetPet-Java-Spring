@@ -19,7 +19,7 @@ public class ServicioExpediente implements IExpedienteServicio {
 
     public ServicioExpediente() {
         String directoryName = System.getProperty("user.dir");
-        directoryName = directoryName + "\\src\\main\\java\\mm221162023Veterinariaspring\\VetPet\\archivos\\Expediente(.txt";
+        directoryName = directoryName + "\\src\\main\\java\\mm221162023Veterinariaspring\\VetPet\\archivos\\Expediente.txt";
 
         InicializarArchivo.InicializarArchivo(directoryName);
 

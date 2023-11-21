@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="_layout">
+    <head>
+        <title>VetPet - Crear Expediente</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="container" layout:fragment="content">
+            <h1>Crear Expediente</h1>
+
+            <form th:action="@{/post-expediente}" method="POST" th:object="${expediente}">         
+                <div class="mb-3">
+                    <label class="form-label" for="idPaciente" >Paciente</label>    
+
+                    <select class="form-select"  th:field="*{idPaciente}">
+                        <option disabled="true" value="0">Seleccione una opcion</option>
+
+                        <option th:each="paciente : ${pacientes}" th:value="${paciente.idPaciente}" th:text="${paciente.nombrePaciente}" ></option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="idVacuna" >Vacuna suministrada</label>    
+
+                    <select class="form-select"  th:field="*{idVacuna}">
+                        <option disabled="true" value="0">Seleccione una opcion</option>
+
+                        <option th:each="vacuna : ${vacunas}" th:value="${vacuna.idVacuna}" th:text="${vacuna.nombreVacuna}" ></option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="medicamentoRecetado" >Medicamento Recetado</label>    
+                    <input type="text" class="form-control" id="medicamentoRecetado" th:field="*{medicamentoRecetado}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="informacionAdicional" >Diagnostico</label>    
+                    <input type="text" class="form-control" id="informacionAdicional" th:field="*{informacionAdicional}" />
+                </div>
+
+                <a class="btn btn-secondary" th:href="@{/expedientes}">Regresar</a>
+                <input type="submit" title="Guardar" value="Guardar" class="btn btn-primary" />
+            </form>
+        </div>
+    </body>
+</html>

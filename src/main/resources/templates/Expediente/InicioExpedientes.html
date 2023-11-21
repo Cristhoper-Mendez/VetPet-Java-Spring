@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="_layout">
+    <head>
+        <title>VetPet - Expedientes</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="container" layout:fragment="content">
+            <h1>Mantenimiento Expedientes</h1>
+
+            <div class="mb-2">
+                <a class="btn btn-primary" th:href="@{/crear-expediente}">Crear Expediente</a>
+            </div>
+
+            <div th:if="${expedientes != null and !expedientes.empty}">
+                <table class="table table-stryped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th >Id Paciente</th>
+                            <th >Id Vacuna</th>
+                            <th >Fecha Cita</th>
+                            <th >Diagnostico</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="expediente, contador : ${expedientes}">
+                            <td>[[${contador.count}]]</td>
+                            <td>[[${expediente.idPaciente}]]</td>
+                            <td>[[${expediente.idVacuna}]]</td>
+                            <td>[[${expediente.fechaCita}]]</td>
+                            <td>[[${expediente.informacionAdicional}]]</td>
+                            <td> 
+                                <a  
+                                    th:href="@{/editar-expediente/} + ${expediente.idExpediente}"
+                                    class="btn btn-secondary btn-edit-expediente">
+                                    <i class="fas fa-angle-double-right"></i> Editar
+                                </a>
+                                <a 
+                                    th:attr="data-id=${expediente.idExpediente}"
+                                    class="btn btn-danger btn-delete-expediente">
+
+                                    <i class="fas fa-angle-double-right"></i> Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <input id="url-delete" th:value="@{/delete-expediente/}" hidden />
+
+        </div>
+
+        <th:block layout:fragment="script">
+            <script th:src="@{/js/expedientes.js}"></script>
+        </th:block>
+
+    </body>
+</html>
