@@ -49,12 +49,12 @@ public class CitaController {
 //    @ResponseBody
     public String PostCita(Cita c, Model model) {
         
-        Paciente p = sPaciente.ObtenerPacientePorId(c.getIdPaciente());
-        
+        Paciente p = sPaciente.ObtenerPacientePorId(c.getIdPaciente());        
         c.setNombrePaciente(p.getNombrePaciente());
+        
         c.setActivo(true);
         sCita.CrearCita(c);
-        // agregar validacion de limite de citas diarias
+        // agregar validacion de limite de citas diarias son 2
 
         
         return "redirect:citas";
@@ -69,11 +69,25 @@ public class CitaController {
     }
     
     @GetMapping("/editar-cita/{idCita}")
-    public String EditarCita(@PathVariable("idRaza") int idCita, Model model){
+    public String EditarCita(@PathVariable("idCita") int idCita, Model model){
         
         Cita cita = sCita.ObtenerCitaPorIdCita(idCita);
         model.addAttribute("cita", cita);
         
+        var pacientes = sPaciente.ObtenerPacientesActivos();
+        model.addAttribute("pacientes", pacientes);
+        
         return "Citas/EditarCita";
+    }
+    
+    @PostMapping("/put-cita")
+    public String PutCita(Cita c, Model model){
+        
+        Paciente p = sPaciente.ObtenerPacientePorId(c.getIdPaciente());        
+        c.setNombrePaciente(p.getNombrePaciente());
+        
+        sCita.ActualizarCita(c);
+        
+        return "redirect:citas";
     }
 }

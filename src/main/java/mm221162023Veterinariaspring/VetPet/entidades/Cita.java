@@ -1,9 +1,12 @@
 package mm221162023Veterinariaspring.VetPet.entidades;
 
 import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Cita {
+
     int idCita;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate fechaCita;
     int idPaciente;
     String motivo;
