@@ -52,22 +52,21 @@ public class VacunaController {
 
         return new RespuestaEstandard(false, "Exitoso.");
     }
-    
+
     @GetMapping("/editar-vacuna/{idVacuna}")
-    @ResponseBody
-    public String EditarVacuna(int idVacuna, Model model){
-        
+    public String EditarVacuna(@PathVariable("idVacuna") int idVacuna, Model model) {
+
         Vacuna vacuna = sVacunas.ObtenerVacunaPorId(idVacuna);
         model.addAttribute("vacuna", vacuna);
-        
+
         return "Vacunas/EditarVacuna";
     }
-    
+
     @PostMapping("/put-vacuna")
-    public String PutVacuna(Vacuna v, Model model){
-        
+    public String PutVacuna(Vacuna v, Model model) {
+
         sVacunas.ActualizarVacunas(v);
-        
+
         return "redirect:vacunas";
     }
 }

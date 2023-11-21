@@ -16,17 +16,17 @@
 
             <form th:action="@{/post-vacuna}" method="POST" th:object="${vacuna}">
                 <div class="mb-3">
-                    <label class="form-label" for="nombreVacuna" >Nombre de la Vacuna</label>    
+                    <label class="form-label" for="nombreVacuna" >Nombre de la Vacuna </label>    
                     <input type="text" class="form-control" id="nombreVacuna" th:field="*{nombreVacuna}" />
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="peso" >Peso minimo para suministrarse</label>    
+                    <label class="form-label" for="peso" >Peso minimo para suministrarse (libras)</label>    
                     <input type="text" class="form-control" id="peso" th:field="*{peso}" />
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="altura" >Altura minima para suministrarse</label>    
+                    <label class="form-label" for="altura" >Altura minima para suministrarse (centimetros)</label>    
                     <input type="text" class="form-control" id="altura" th:field="*{altura}" />
                 </div>
 
