@@ -4,7 +4,8 @@ import java.util.List;
 import mm221162023Veterinariaspring.VetPet.entidades.Cita;
 
 public interface ICitaServicio {
-     public List<Cita> ObtenerCitas();
+
+    public List<Cita> ObtenerCitas();
 
     public List<Cita> ObtenerCitasActivas();
 
@@ -13,6 +14,8 @@ public interface ICitaServicio {
     public boolean ActualizarCita(Cita cita);
 
     public boolean EliminarCita(int idCita);
+
+    public Cita ObtenerCitaPorIdCita(int idCita);
 
     public List<Cita> ObtenerCitasPorPacienteId(int idPaciente);
 }

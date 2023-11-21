@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="_layout">
+    <head>
+        <title>VetPet - Crear Cita</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="container mt-2" layout:fragment="content">
+            <h1>Crear Cita</h1>
+
+            <form th:action="@{/post-cita}" method="POST" th:object="${cita}">
+                <div class="mb-3">
+                    <label class="form-label" for="fechaCita" >Fecha de la Cita</label>    
+                    <input type="date" class="form-control" id="fechaCita" th:field="*{fechaCita}" />
+                </div> 
+
+                <div class="mb-3">
+                    <label class="form-label" for="motivo" >Motivo de la Cita</label>    
+                    <input type="text" class="form-control" id="motivo" th:field="*{motivo}" />
+                </div> 
+
+                <div class="mb-3">
+                    <label class="form-label" for="fechaCita" >Paciente</label>    
+                    <select class="form-select"  th:field="*{idPaciente}">
+                        <option disabled="true" value="0">Seleccione una opcion</option>
+
+                        <option th:each="paciente : ${pacientes}" th:value="${paciente.idPaciente}" th:text="${paciente.nombrePaciente}" ></option>
+                    </select>
+                </div> 
+
+                <a class="btn btn-secondary" th:href="@{/citas}">Regresar</a>
+                <input type="submit" title="Guardar" value="Guardar" class="btn btn-primary" />   
+            </form>
+        </div>
+
+        <th:block layout:fragment="script">
+            <script th:src="@{/js/citas.js}"></script>
+        </th:block>
+    </body>
+</html>

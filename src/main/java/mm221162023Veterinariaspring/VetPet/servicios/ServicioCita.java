@@ -146,6 +146,20 @@ public class ServicioCita implements ICitaServicio {
     }
 
     @Override
+    public Cita ObtenerCitaPorIdCita(int idCita) {
+        List<Cita> LstCitas = this.ObtenerCitasActivas();
+        Cita c = new Cita();
+
+        for (int i = 0; i < LstCitas.size(); i++) {
+            if (idCita == LstCitas.get(i).getIdCita()) {
+                c = LstCitas.get(i);
+            }
+        }
+
+        return c;
+    }
+
+    @Override
     public List<Cita> ObtenerCitasPorPacienteId(int idPaciente) {
         List<Cita> LstCitasDelPaciente = new ArrayList<>();
         try {

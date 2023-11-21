@@ -53,7 +53,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="numeroIdentificacion" >Numero de Identificacion del Paciente</label>    
-                    <input type="text" class="form-control" id="numeroIdentificacion" th:field="*{numeroIdentificacion}" />
+                    <input type="text" class="form-control" id="numeroIdentificacion" disabled th:field="*{numeroIdentificacion}" />
                 </div>
 
                 <div class="mb-3">
@@ -63,7 +63,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="fechaNacimiento" >Fecha de Nacimiento del Paciente</label>    
-                    <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" />
+                    <input type="date" class="form-control" disabled id="fechaNacimiento" th:field="*{fechaNacimiento}" />
                 </div>
 
                 <input type="hidden" th:field="*{idPaciente}" />
