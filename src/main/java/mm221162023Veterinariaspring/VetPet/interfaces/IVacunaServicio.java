@@ -8,6 +8,8 @@ public interface IVacunaServicio {
     public List<Vacuna> ObtenerVacunas();
 
     public List<Vacuna> ObtenerVacunasActivas();
+    
+    public Vacuna ObtenerVacunaPorId(int idVacuna);
 
     public boolean CrearVacunas(Vacuna vacuna);
 

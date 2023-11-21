@@ -134,4 +134,20 @@ public class ServicioVacunas implements IVacunaServicio {
         return LstVacunasActivas;
     }
 
+    @Override
+    public Vacuna ObtenerVacunaPorId(int idVacuna) {
+        Vacuna v = new Vacuna();
+        var lstVacunas = this.ObtenerVacunasActivas();
+
+        for (int i = 0; i < lstVacunas.size(); i++) {
+            Vacuna vacuna = lstVacunas.get(i);
+
+            if (vacuna.getIdVacuna() == idVacuna) {
+                v = vacuna;
+            }
+        }
+
+        return v;
+    }
+
 }

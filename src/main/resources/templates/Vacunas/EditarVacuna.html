@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"  
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="_layout">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="container mt-2" layout:fragment="content">
+            <h1>Editar Vacuna</h1>
+
+            <form th:action="@{/put-vacuna}" method="POST" th:object="${vacuna}">
+                <div class="mb-3">
+                    <label class="form-label" for="nombreVacuna" >Nombre de la Vacuna</label>    
+                    <input type="text" class="form-control" id="nombreVacuna" th:field="*{nombreVacuna}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="peso" >Peso minimo para suministrarse</label>    
+                    <input type="text" class="form-control" id="peso" th:field="*{peso}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="altura" >Altura minima para suministrarse</label>    
+                    <input type="text" class="form-control" id="altura" th:field="*{altura}" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="edad" >Edad minima para suministrarse</label>    
+                    <input type="text" class="form-control" id="edad" th:field="*{edad}" />
+                </div>
+
+                <input type="hidden" th:value="*{idVacuna}" />
+                <input type="hidden" th:value="*{activo}" />
+                
+                <a class="btn btn-secondary" th:href="@{/vacunas}">Regresar</a>
+                <input type="submit" title="Guardar" value="Guardar" class="btn btn-primary" />
+            </form>
+        </div>
+    </body>
+</html>
