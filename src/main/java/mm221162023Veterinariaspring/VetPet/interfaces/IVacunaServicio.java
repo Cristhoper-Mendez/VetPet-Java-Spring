@@ -15,5 +15,4 @@ public interface IVacunaServicio {
 
     public boolean EliminarVacunas(int vacunaId);
 
-    public List<Vacuna> ObtenerVacunasPorIdPaciente(int idPaciente);
 }

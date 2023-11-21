@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"  
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="_layout">
+    <head>
+        <title>VetPet - Vacunas</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="container mt-2" layout:fragment="content">
+            <h1>Mantenimiento de Vacunas</h1>
+
+            <div class="mb-2">
+                <a class="btn btn-primary" th:href="@{/crear-vacuna}">Crear Vacuna</a>
+            </div>
+
+            <div th:if="${vacunas != null and !vacunas.empty}">
+                <table class="table table-stryped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th >Nombre</th>
+                            <th >Peso</th>
+                            <th >Altura</th>
+                            <th >Edad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="vacuna, contador : ${vacunas}">
+                            <td>[[${contador.count}]]</td>
+                            <td>[[${vacuna.nombreVacuna}]]</td>
+                            <td>[[${vacuna.peso}]]</td>
+                            <td>[[${vacuna.altura}]]</td>
+                            <td>[[${vacuna.edad}]]</td>
+                            <td> 
+                                <a  
+                                    th:href="@{/editar-vacuna/} + ${vacuna.idVacuna}"
+                                    class="btn btn-secondary btn-edit-vacuna">
+                                    <i class="fas fa-angle-double-right"></i> Editar
+                                </a>
+                                <a 
+                                    th:attr="data-id=${vacuna.idVacuna}"
+                                    class="btn btn-danger btn-delete-vacuna">
+
+                                    <i class="fas fa-angle-double-right"></i> Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <input id="url-delete" th:value="@{/delete-vacuna/}" type="hidden" />
+        </div>
+
+        <th:block layout:fragment="script">
+            <script th:src="@{/js/vacunas.js}"></script>
+        </th:block>
+    </body>
+</html>

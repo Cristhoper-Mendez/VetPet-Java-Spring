@@ -22,7 +22,7 @@ public class ServicioVacunas implements IVacunaServicio {
         directoryName = directoryName + "\\src\\main\\java\\mm221162023Veterinariaspring\\VetPet\\archivos\\Vacunas.txt";
 
         InicializarArchivo.InicializarArchivo(directoryName);
-        
+
         this.archivo = directoryName;
     }
 
@@ -134,17 +134,4 @@ public class ServicioVacunas implements IVacunaServicio {
         return LstVacunasActivas;
     }
 
-    @Override
-    public List<Vacuna> ObtenerVacunasPorIdPaciente(int idPaciente) {
-        List<Vacuna> LstVacunasPaciente = new ArrayList<>();
-        List<Vacuna> LstVacunas = this.ObtenerVacunasActivas();
-
-        for (Vacuna v : LstVacunas) {
-            if (v.getIdPaciente() == idPaciente) {
-                LstVacunasPaciente.add(v);
-            }
-        }
-
-        return LstVacunasPaciente;
-    }
 }

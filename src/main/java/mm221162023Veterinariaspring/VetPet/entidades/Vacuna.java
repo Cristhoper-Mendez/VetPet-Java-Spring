@@ -1,13 +1,12 @@
 package mm221162023Veterinariaspring.VetPet.entidades;
 
 public class Vacuna {
-    
+
     int idVacuna;
     String nombreVacuna;
     double peso;
     double altura;
     double edad;
-    int idPaciente;
     boolean activo;
 
     public Vacuna() {
@@ -21,8 +20,7 @@ public class Vacuna {
         this.peso = Double.parseDouble(partes[2]);
         this.altura = Double.parseDouble(partes[3]);
         this.edad = Double.parseDouble(partes[4]);
-        this.idPaciente = Integer.parseInt(partes[5]);
-        this.activo = Boolean.parseBoolean(partes[6]);
+        this.activo = Boolean.parseBoolean(partes[5]);
     }
 
     public int getIdVacuna() {
@@ -65,14 +63,6 @@ public class Vacuna {
         this.edad = edad;
     }
 
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
     public boolean isActivo() {
         return activo;
     }
@@ -84,7 +74,7 @@ public class Vacuna {
     @Override
     public String toString() {
         String str = this.idVacuna + "," + this.nombreVacuna + "," + this.peso + "," + this.altura
-                + "," + this.edad + "," + this.idPaciente + "," + this.activo;
+                + "," + this.edad + "," + this.activo;
 
         return str;
     }
