@@ -101,10 +101,9 @@ public class ServicioExpediente implements IExpedienteServicio {
                     LstExpedientes.set(i, expediente);
                     break;
                 }
-
-                GuardarExpedientes(LstExpedientes);
             }
 
+            GuardarExpedientes(LstExpedientes);
         } catch (Exception e) {
             return false;
         }
@@ -161,5 +160,22 @@ public class ServicioExpediente implements IExpedienteServicio {
         }
 
         return LstExpedientes;
+    }
+
+    @Override
+    public Expediente ObtenerExpedientePorIdExpediente(int idExpediente) {
+        Expediente exp = new Expediente();
+        var lstExpedientes = this.ObtenerExpedienteActivas();
+
+        for (int i = 0; i < lstExpedientes.size(); i++) {
+            Expediente expediente = lstExpedientes.get(i);
+
+            if (idExpediente == expediente.getIdExpediente()) {
+                exp = expediente;
+                break;
+            }
+        }
+
+        return exp;
     }
 }

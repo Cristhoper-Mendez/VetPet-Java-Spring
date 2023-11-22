@@ -8,6 +8,8 @@ public interface IExpedienteServicio {
     public List<Expediente> ObtenerExpediente();
 
     public List<Expediente> ObtenerExpedienteActivas();
+    
+    public Expediente ObtenerExpedientePorIdExpediente(int idExpediente);
 
     public boolean CrearExpediente(Expediente expediente);
 
