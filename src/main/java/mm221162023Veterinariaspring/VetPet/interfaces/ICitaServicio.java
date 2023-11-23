@@ -18,4 +18,6 @@ public interface ICitaServicio {
     public Cita ObtenerCitaPorIdCita(int idCita);
 
     public List<Cita> ObtenerCitasPorPacienteId(int idPaciente);
+    
+    public boolean ValidarLimiteCitas(Cita cita);
 }

@@ -33,7 +33,7 @@
                         <tr th:each="cita, contador : ${citas}">
                             <td>[[${contador.count}]]</td>
                             <td>[[${cita.nombrePaciente}]]</td>
-                            <td>[[${cita.fechaCita}]]</td>
+                            <td>[[${#temporals.format(cita.fechaCita, 'dd-MM-yyyy HH:mm')}]]</td>
                             <td>[[${cita.motivo}]]</td>
                             <td> 
                                 <a  

@@ -1,13 +1,13 @@
 package mm221162023Veterinariaspring.VetPet.entidades;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Cita {
 
     int idCita;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDate fechaCita;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    LocalDateTime fechaCita;
     int idPaciente;
     String motivo;
     String nombrePaciente;
@@ -20,7 +20,7 @@ public class Cita {
         String[] partes = citaStr.split(",");
 
         this.idCita = Integer.parseInt(partes[0]);
-        this.fechaCita = LocalDate.parse(partes[1]);
+        this.fechaCita = LocalDateTime.parse(partes[1]);
         this.idPaciente = Integer.parseInt(partes[2]);
         this.motivo = partes[3];
         this.nombrePaciente = partes[4];
@@ -35,11 +35,11 @@ public class Cita {
         this.idCita = idCita;
     }
 
-    public LocalDate getFechaCita() {
+    public LocalDateTime getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(LocalDate fechaCita) {
+    public void setFechaCita(LocalDateTime fechaCita) {
         this.fechaCita = fechaCita;
     }
 

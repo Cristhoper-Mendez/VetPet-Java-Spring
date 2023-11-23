@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import mm221162023Veterinariaspring.VetPet.entidades.Cita;
@@ -175,5 +176,28 @@ public class ServicioCita implements ICitaServicio {
             System.out.println("Error: " + e.getMessage());
         }
         return LstCitasDelPaciente;
+    }
+
+    @Override
+    public boolean ValidarLimiteCitas(Cita cita) {
+        boolean result = false;
+
+        var lstCitas = this.ObtenerCitasActivas();
+        int contador = 0;
+
+        for (Cita c : lstCitas) {
+            LocalDate t1 = c.getFechaCita().toLocalDate();
+            LocalDate t2 = cita.getFechaCita().toLocalDate();
+
+            if (t1.compareTo(t2) == 0) {
+                if (c.getIdCita() != cita.getIdCita()) {
+                    contador++;
+                }
+            }
+        }
+
+        result = contador > 1;
+
+        return result;
     }
 }
