@@ -12,7 +12,13 @@
     </head>
     <body>
         <div class="container mt-2" layout:fragment="content">
-            <h1>Crear Tipo de Paciente</h1>
+            <h1>Crear Paciente</h1>
+
+            <div th:if="${mensaje != null}">
+                <div class="alert alert-warning" role="alert">
+                    [[${mensaje}]]
+                </div>
+            </div>
 
             <form th:action="@{/post-paciente}" method="POST" th:object="${paciente}">
                 <div class="mb-3">
@@ -67,7 +73,7 @@
                     <label class="form-label" for="fechaNacimiento" >Fecha de Nacimiento del Paciente</label>    
                     <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" />
                 </div>
-                
+
                 <!--<input th:field="fechaInscripcion" type="hidden"   />-->
 
                 <a class="btn btn-secondary" th:href="@{/pacientes}">Regresar</a>

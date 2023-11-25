@@ -15,6 +15,7 @@ import mm221162023Veterinariaspring.VetPet.servicios.ServicioPaciente;
 import mm221162023Veterinariaspring.VetPet.utilidades.RespuestaEstandard;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioRaza;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioTipoPaciente;
+import mm221162023Veterinariaspring.VetPet.utilidades.Validador;
 
 @Controller
 public class PacienteController {
@@ -54,12 +55,24 @@ public class PacienteController {
     @PostMapping("/post-paciente")
     public String PostPaciente(Paciente p, Model model) {
 
-        Raza r = sRaza.ObtenerRazaPorId(p.getRazaId());
-
-        p.setTipoPaciente(r.getTipoPaciente());
         p.setActivo(true);
         p.setFechaInscripcion(LocalDate.now());
 
+        if (Validador.ValidarPaciente(p)) {
+            model.addAttribute("paciente", p);
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+
+            var razas = sRaza.ObtenerRazasActivas();
+            model.addAttribute("razas", razas);
+
+            var tipos = sTipoPaciente.ObtenerTipoPacientesActivos();
+            model.addAttribute("tipoPacientes", tipos);
+
+            return "Paciente/CrearPaciente";
+        }
+
+        Raza r = sRaza.ObtenerRazaPorId(p.getRazaId());
+        p.setTipoPaciente(r.getTipoPaciente());
         sPaciente.CrearPaciente(p);
 
         return "redirect:pacientes";
@@ -92,6 +105,19 @@ public class PacienteController {
 
         Raza r = sRaza.ObtenerRazaPorId(p.getRazaId());
         p.setTipoPaciente(r.getTipoPaciente());
+
+        if (Validador.ValidarPaciente(p)) {
+            model.addAttribute("paciente", p);
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+
+            var razas = sRaza.ObtenerRazasActivas();
+            model.addAttribute("razas", razas);
+
+            var tipos = sTipoPaciente.ObtenerTipoPacientesActivos();
+            model.addAttribute("tipoPacientes", tipos);
+
+            return "Paciente/EditarPaciente";
+        }
 
         sPaciente.ActualizarPaciente(p);
 

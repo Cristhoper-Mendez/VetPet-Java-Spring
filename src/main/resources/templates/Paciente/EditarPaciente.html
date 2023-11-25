@@ -11,7 +11,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-        <div class="container mt-2" layout:fragment="content"><h1>Crear Tipo de Paciente</h1>
+        <div class="container mt-2" layout:fragment="content">
+            <h1>Editar Paciente</h1>
+
+            <div th:if="${mensaje != null}">
+                <div class="alert alert-warning" role="alert">
+                    [[${mensaje}]]
+                </div>
+            </div>
+
             <form th:action="@{/put-paciente}" method="POST" th:object="${paciente}">
                 <div class="mb-3">
                     <label class="form-label" for="nombrePaciente" >Nombre del Paciente</label>    
@@ -68,6 +76,8 @@
 
                 <input type="hidden" th:field="*{idPaciente}" />
                 <input type="hidden" th:field="*{fechaInscripcion}" />
+                <input type="hidden" th:field="*{numeroIdentificacion}" />
+                <input type="hidden" th:field="*{fechaNacimiento}" />
                 <input type="hidden" th:field="*{activo}" />
                 <!--<input type="hidden" th:field="@{idPaciente}" />-->
 

@@ -20,9 +20,6 @@ public class Paciente {
     LocalDate fechaNacimiento;
     boolean activo;
 
-    // Relaciones
-    Raza razaPaciente;
-
     public Paciente() {
     }
 
@@ -82,14 +79,6 @@ public class Paciente {
 
     public void setRazaId(int razaId) {
         this.razaId = razaId;
-    }
-
-    public Raza getRazaPaciente() {
-        return razaPaciente;
-    }
-
-    public void setRazaPaciente(Raza razaPaciente) {
-        this.razaPaciente = razaPaciente;
     }
 
     public int getTipoPaciente() {

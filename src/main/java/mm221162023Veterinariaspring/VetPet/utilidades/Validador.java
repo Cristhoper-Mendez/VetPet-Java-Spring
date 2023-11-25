@@ -68,8 +68,6 @@ public class Validador {
                 && validarCampoNoNulo(p.getNombreDueno())
                 && validarCampoPositivo(p.getEdadPaciente())
                 && validarCampoPositivo(p.getRazaId())
-                && validarCampoPositivo(p.getTipoPaciente())
-                && validarCampoNotNull(p.getFechaInscripcion())
                 && validarCampoNoNulo(p.getMedidas())
                 && validarCampoPositivo(p.getNumeroIdentificacion())
                 && validarCampoNoNulo(p.getPelajePaciente())
@@ -88,7 +86,11 @@ public class Validador {
     }
 
     private static boolean validarCampoNoNulo(String campo) {
-        return campo == null || campo.isEmpty();
+        boolean res = true;
+        
+        res = campo == null || campo.isEmpty();
+       var tr = campo.isEmpty();
+        return res;
     }
 
     private static boolean validarCampoPositivo(double campo) {
