@@ -58,7 +58,7 @@ public class PacienteController {
         p.setActivo(true);
         p.setFechaInscripcion(LocalDate.now());
 
-        if (Validador.ValidarPaciente(p)) {
+        if (!Validador.ValidarPaciente(p)) {
             model.addAttribute("paciente", p);
             model.addAttribute("mensaje", "Todos los campos son requeridos.");
 
@@ -106,7 +106,7 @@ public class PacienteController {
         Raza r = sRaza.ObtenerRazaPorId(p.getRazaId());
         p.setTipoPaciente(r.getTipoPaciente());
 
-        if (Validador.ValidarPaciente(p)) {
+        if (!Validador.ValidarPaciente(p)) {
             model.addAttribute("paciente", p);
             model.addAttribute("mensaje", "Todos los campos son requeridos.");
 

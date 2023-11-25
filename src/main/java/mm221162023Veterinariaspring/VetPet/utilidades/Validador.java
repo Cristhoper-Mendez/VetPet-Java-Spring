@@ -64,18 +64,50 @@ public class Validador {
     }
 
     public static boolean ValidarPaciente(Paciente p) {
-        return validarCampoNoNulo(p.getNombrePaciente())
-                && validarCampoNoNulo(p.getNombreDueno())
-                && validarCampoPositivo(p.getEdadPaciente())
-                && validarCampoPositivo(p.getRazaId())
-                && validarCampoNoNulo(p.getMedidas())
-                && validarCampoPositivo(p.getNumeroIdentificacion())
-                && validarCampoNoNulo(p.getPelajePaciente())
-                && validarCampoNotNull(p.getFechaNacimiento());
+        boolean result = true;
+
+        if (p.getNombreDueno() == null || p.getNombreDueno().isEmpty()) {
+            result = false;
+        }
+
+        if (p.getNombrePaciente() == null || p.getNombrePaciente().isEmpty()) {
+            result = false;
+        }
+
+        if (p.getRazaId() <= 0) {
+            result = false;
+        }
+
+        if (p.getEdadPaciente() <= 0) {
+            result = false;
+        }
+
+        if (p.getMedidas() == null || p.getMedidas().isEmpty()) {
+            result = false;
+        }
+
+        if (p.getNumeroIdentificacion() <= 0) {
+            result = false;
+        }
+
+        if (p.getPelajePaciente() == null || p.getPelajePaciente().isEmpty()) {
+            result = false;
+        }
+
+        if (p.getFechaNacimiento() == null) {
+            result = false;
+        }
+
+        return result;
     }
 
     public static boolean ValidarTipoPaciente(TipoPaciente tp) {
-        return validarCampoNoNulo(tp.getNombreTipoPaciente());
+        boolean result = true;
+        if (tp.getNombreTipoPaciente() == null || tp.getNombreTipoPaciente().isEmpty()) {
+            result = false;
+        }
+
+        return result;
     }
 
     public static boolean ValidarVacuna(Vacuna v) {
@@ -100,23 +132,4 @@ public class Validador {
         return result;
     }
 
-    private static boolean validarCampoNoNulo(String campo) {
-        boolean res = true;
-
-        res = campo == null || campo.isEmpty();
-        var tr = campo.isEmpty();
-        return res;
-    }
-
-    private static boolean validarCampoPositivo(double campo) {
-        return campo > 0;
-    }
-
-    private static boolean validarCampoPositivo(int campo) {
-        return campo > 0;
-    }
-
-    private static boolean validarCampoNotNull(LocalDate campo) {
-        return campo != null;
-    }
 }
