@@ -49,10 +49,14 @@ public class CitaController {
     @PostMapping("/post-cita")
     public String PostCita(Cita c, Model model) {
 
-        Paciente p = sPaciente.ObtenerPacientePorId(c.getIdPaciente());
-        c.setNombrePaciente(p.getNombrePaciente());
+        if (!Validador.ValidarCita(c)) {
+            var pacientes = sPaciente.ObtenerPacientesActivos();
+            model.addAttribute("pacientes", pacientes);
 
-        c.setActivo(true);
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+
+            return "Citas/CrearCita";
+        }
 
         if (sCita.ValidarLimiteCitas(c)) {
             var pacientes = sPaciente.ObtenerPacientesActivos();
@@ -62,6 +66,11 @@ public class CitaController {
 
             return "Citas/CrearCita";
         }
+
+        Paciente p = sPaciente.ObtenerPacientePorId(c.getIdPaciente());
+        c.setNombrePaciente(p.getNombrePaciente());
+
+        c.setActivo(true);
 
         sCita.CrearCita(c);
 
@@ -91,8 +100,14 @@ public class CitaController {
     @PostMapping("/put-cita")
     public String PutCita(Cita c, Model model) {
 
-        Paciente p = sPaciente.ObtenerPacientePorId(c.getIdPaciente());
-        c.setNombrePaciente(p.getNombrePaciente());
+        if (!Validador.ValidarCita(c)) {
+            var pacientes = sPaciente.ObtenerPacientesActivos();
+            model.addAttribute("pacientes", pacientes);
+
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+
+            return "Citas/EditarCita";
+        }
 
         if (sCita.ValidarLimiteCitas(c)) {
             var pacientes = sPaciente.ObtenerPacientesActivos();
@@ -103,6 +118,8 @@ public class CitaController {
             return "Citas/EditarCita";
         }
 
+        Paciente p = sPaciente.ObtenerPacientePorId(c.getIdPaciente());
+        c.setNombrePaciente(p.getNombrePaciente());
         sCita.ActualizarCita(c);
 
         return "redirect:citas";

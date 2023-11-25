@@ -36,6 +36,10 @@ public class Cita {
     }
 
     public LocalDateTime getFechaCita() {
+        if (fechaCita == null) {
+            return null;
+        }
+
         return fechaCita;
     }
 

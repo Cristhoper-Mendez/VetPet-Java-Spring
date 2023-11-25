@@ -30,11 +30,7 @@ public class Validador {
             result = false;
         }
 
-        if (c.getMotivo().isEmpty()) {
-            result = false;
-        }
-
-        if (c.getNombrePaciente().isEmpty()) {
+        if (c.getMotivo() == null || c.getMotivo().isEmpty()) {
             result = false;
         }
 
