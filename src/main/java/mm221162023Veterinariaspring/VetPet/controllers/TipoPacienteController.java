@@ -39,7 +39,7 @@ public class TipoPacienteController {
     public String PostTipoPaciente(TipoPaciente tp, Model model) {
         tp.setActivo(true);
 
-        if (Validador.ValidarTipoPaciente(tp)) {
+        if (!Validador.ValidarTipoPaciente(tp)) {
             model.addAttribute("mensaje", "Todos los campos son requeridos.");
 
             model.addAttribute("tipoPaciente", tp);
@@ -63,7 +63,7 @@ public class TipoPacienteController {
     @PostMapping("/put-tipo-paciente")
     public String PutTipoPaciente(TipoPaciente tp, Model model) {
 
-        if (Validador.ValidarTipoPaciente(tp)) {
+        if (!Validador.ValidarTipoPaciente(tp)) {
             model.addAttribute("mensaje", "Todos los campos son requeridos.");
 
             model.addAttribute("tipoPaciente", tp);
