@@ -13,6 +13,12 @@
         <div class="container" layout:fragment="content">
             <h1>Mantenimiento de Razas</h1>
 
+            <div th:if="${mensaje != null}">
+                <div class="alert alert-warning" role="alert">
+                    [[${mensaje}]]
+                </div>
+            </div>
+
             <form th:action="@{/put-raza}" method="POST" th:object="${raza}">
                 <div class="mb-3">
                     <label class="form-label" for="nombreRaza" >Nombre de la Raza</label>    

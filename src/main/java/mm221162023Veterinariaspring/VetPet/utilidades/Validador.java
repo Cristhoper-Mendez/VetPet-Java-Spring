@@ -5,10 +5,10 @@ import mm221162023Veterinariaspring.VetPet.entidades.*;
 
 public class Validador {
 
-    public boolean ValidarRaza(Raza r) {
+    public static boolean ValidarRaza(Raza r) {
         boolean result = true;
 
-        if (r.getNombreRaza() == null && r.getNombreRaza().isEmpty()) {
+        if (r.getNombreRaza() == null || r.getNombreRaza().isEmpty()) {
             result = false;
         }
 
@@ -19,7 +19,7 @@ public class Validador {
         return result;
     }
 
-    public boolean ValidarCita(Cita c) {
+    public static boolean ValidarCita(Cita c) {
         boolean result = true;
 
         if (c.getFechaCita() == null) {
@@ -41,7 +41,7 @@ public class Validador {
         return result;
     }
 
-    public boolean ValidarExpediente(Expediente ex) {
+    public static boolean ValidarExpediente(Expediente ex) {
         boolean result = true;
 
         if (ex.getFechaCita() == null) {
@@ -67,7 +67,7 @@ public class Validador {
         return result;
     }
 
-    public boolean ValidarPaciente(Paciente p) {
+    public static boolean ValidarPaciente(Paciente p) {
         return validarCampoNoNulo(p.getNombrePaciente())
                 && validarCampoNoNulo(p.getNombreDueno())
                 && validarCampoPositivo(p.getEdadPaciente())
@@ -80,31 +80,31 @@ public class Validador {
                 && validarCampoNotNull(p.getFechaNacimiento());
     }
 
-    public boolean ValidarTipoPaciente(TipoPaciente tp) {
+    public static boolean ValidarTipoPaciente(TipoPaciente tp) {
         return validarCampoNoNulo(tp.getNombreTipoPaciente())
                 && validarCampoPositivo(tp.getIdTipoPaciente());
     }
 
-    public boolean ValidarVacuna(Vacuna v) {
+    public static boolean ValidarVacuna(Vacuna v) {
         return validarCampoNoNulo(v.getNombreVacuna())
                 && validarCampoPositivo(v.getPeso())
                 && validarCampoPositivo(v.getAltura())
                 && validarCampoPositivo(v.getEdad());
     }
 
-    private boolean validarCampoNoNulo(String campo) {
+    private static boolean validarCampoNoNulo(String campo) {
         return campo != null && !campo.isEmpty();
     }
 
-    private boolean validarCampoPositivo(double campo) {
+    private static boolean validarCampoPositivo(double campo) {
         return campo > 0;
     }
 
-    private boolean validarCampoPositivo(int campo) {
+    private static boolean validarCampoPositivo(int campo) {
         return campo > 0;
     }
 
-    private boolean validarCampoNotNull(LocalDate campo) {
+    private static boolean validarCampoNotNull(LocalDate campo) {
         return campo != null;
     }
 }

@@ -12,6 +12,7 @@ import mm221162023Veterinariaspring.VetPet.entidades.Raza;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioRaza;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioTipoPaciente;
 import mm221162023Veterinariaspring.VetPet.utilidades.RespuestaEstandard;
+import mm221162023Veterinariaspring.VetPet.utilidades.Validador;
 
 @Controller
 public class RazaController {
@@ -43,6 +44,17 @@ public class RazaController {
 
     @PostMapping("/post-raza")
     public String PostRaza(Raza ra, Model model) {
+
+        if (!Validador.ValidarRaza(ra)) {
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+            model.addAttribute("raza", ra);
+
+            var lstTipoPacientes = sTipoPaciente.ObtenerTipoPacientesActivos();
+            model.addAttribute("tipoPacientes", lstTipoPacientes);
+
+            return "Raza/CrearRaza";
+        }
+
         ra.setActivo(true);
         sRaza.CrearRaza(ra);
 
@@ -62,20 +74,28 @@ public class RazaController {
     public String EditarRaza(@PathVariable("idRaza") int idRaza, Model model) {
         Raza raza = sRaza.ObtenerRazaPorId(idRaza);
         model.addAttribute("raza", raza);
-        
+
         var lstTipoPacientes = sTipoPaciente.ObtenerTipoPacientesActivos();
         model.addAttribute("tipoPacientes", lstTipoPacientes);
 
         return "Raza/EditarRaza";
     }
-    
+
     @PostMapping("put-raza")
-    public String PutRaza(Raza ra, Model model){
-        
+    public String PutRaza(Raza ra, Model model) {
+
+        if (!Validador.ValidarRaza(ra)) {
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+            model.addAttribute("raza", ra);
+
+            var lstTipoPacientes = sTipoPaciente.ObtenerTipoPacientesActivos();
+            model.addAttribute("tipoPacientes", lstTipoPacientes);
+
+            return "Raza/CrearRaza";
+        }
+
         sRaza.ActualizarRaza(ra);
-        
+
         return "redirect:razas";
     }
-
-//    @ResponseBody
 }
