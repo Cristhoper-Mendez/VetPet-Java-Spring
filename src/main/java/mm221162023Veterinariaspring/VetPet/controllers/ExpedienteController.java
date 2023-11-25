@@ -16,6 +16,7 @@ import mm221162023Veterinariaspring.VetPet.servicios.ServicioExpediente;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioPaciente;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioVacunas;
 import mm221162023Veterinariaspring.VetPet.utilidades.RespuestaEstandard;
+import mm221162023Veterinariaspring.VetPet.utilidades.Validador;
 
 @Controller
 public class ExpedienteController {
@@ -58,6 +59,20 @@ public class ExpedienteController {
 
         xp.setActivo(true);
         xp.setFechaCita(LocalDate.now());
+
+        if (!Validador.ValidarExpediente(xp)) {
+            model.addAttribute("expediente", xp);
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+
+            var pacientes = sPacientes.ObtenerPacientesActivos();
+            model.addAttribute("pacientes", pacientes);
+
+            var vacunas = sVacunas.ObtenerVacunasActivas();
+            model.addAttribute("vacunas", vacunas);
+
+            return "Expediente/CrearExpediente";
+        }
+
         sExpedientes.CrearExpediente(xp);
 
         return "redirect:expedientes";
@@ -89,6 +104,19 @@ public class ExpedienteController {
 
     @PostMapping("/put-expediente")
     public String PutExpediente(Expediente exp, Model model) {
+
+        if (!Validador.ValidarExpediente(exp)) {
+            model.addAttribute("expediente", exp);
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+
+            var pacientes = sPacientes.ObtenerPacientesActivos();
+            model.addAttribute("pacientes", pacientes);
+
+            var vacunas = sVacunas.ObtenerVacunasActivas();
+            model.addAttribute("vacunas", vacunas);
+
+            return "Expediente/EditarExpediente";
+        }
 
         sExpedientes.ActualizarExpediente(exp);
 
