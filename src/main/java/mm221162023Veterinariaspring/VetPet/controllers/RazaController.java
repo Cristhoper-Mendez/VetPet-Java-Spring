@@ -91,7 +91,7 @@ public class RazaController {
             var lstTipoPacientes = sTipoPaciente.ObtenerTipoPacientesActivos();
             model.addAttribute("tipoPacientes", lstTipoPacientes);
 
-            return "Raza/CrearRaza";
+            return "Raza/EditarRaza";
         }
 
         sRaza.ActualizarRaza(ra);

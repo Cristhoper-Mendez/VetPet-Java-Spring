@@ -14,6 +14,12 @@
         <div class="container" layout:fragment="content">
             <h1>Crear Tipo de Paciente</h1>
 
+            <div th:if="${mensaje != null}">
+                <div class="alert alert-warning" role="alert">
+                    [[${mensaje}]]
+                </div>
+            </div>
+
             <form th:action="@{/post-tipo-paciente}" method="POST" th:object="${tipoPaciente}">
                 <div class="mb-3">
                     <label class="form-label" for="nombreTipoPaciente" >Nombre del Tipo de Paciente</label>    

@@ -81,8 +81,7 @@ public class Validador {
     }
 
     public static boolean ValidarTipoPaciente(TipoPaciente tp) {
-        return validarCampoNoNulo(tp.getNombreTipoPaciente())
-                && validarCampoPositivo(tp.getIdTipoPaciente());
+        return validarCampoNoNulo(tp.getNombreTipoPaciente());
     }
 
     public static boolean ValidarVacuna(Vacuna v) {
@@ -93,7 +92,7 @@ public class Validador {
     }
 
     private static boolean validarCampoNoNulo(String campo) {
-        return campo != null && !campo.isEmpty();
+        return campo == null || campo.isEmpty();
     }
 
     private static boolean validarCampoPositivo(double campo) {

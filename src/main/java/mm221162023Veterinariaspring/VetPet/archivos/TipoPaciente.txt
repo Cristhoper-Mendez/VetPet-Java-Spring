@@ -1,2 +1,4 @@
 2,Gato,true
 3,Perro 2,false
+4,Perro,true
+5,Perro 2,true
