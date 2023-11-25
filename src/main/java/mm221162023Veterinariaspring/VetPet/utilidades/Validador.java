@@ -79,17 +79,32 @@ public class Validador {
     }
 
     public static boolean ValidarVacuna(Vacuna v) {
-        return validarCampoNoNulo(v.getNombreVacuna())
-                && validarCampoPositivo(v.getPeso())
-                && validarCampoPositivo(v.getAltura())
-                && validarCampoPositivo(v.getEdad());
+        boolean result = true;
+
+        if (v.getNombreVacuna() == null || v.getNombreVacuna().isEmpty()) {
+            result = false;
+        }
+
+        if (v.getPeso() <= 0) {
+            result = false;
+        }
+
+        if (v.getAltura() <= 0) {
+            result = false;
+        }
+
+        if (v.getEdad() <= 0) {
+            result = false;
+        }
+
+        return result;
     }
 
     private static boolean validarCampoNoNulo(String campo) {
         boolean res = true;
-        
+
         res = campo == null || campo.isEmpty();
-       var tr = campo.isEmpty();
+        var tr = campo.isEmpty();
         return res;
     }
 

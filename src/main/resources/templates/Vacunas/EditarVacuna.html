@@ -14,6 +14,12 @@
         <div class="container mt-2" layout:fragment="content">
             <h1>Editar Vacuna</h1>
 
+            <div th:if="${mensaje != null}">
+                <div class="alert alert-warning" role="alert">
+                    [[${mensaje}]]
+                </div>
+            </div>
+
             <form th:action="@{/put-vacuna}" method="POST" th:object="${vacuna}">
                 <div class="mb-3">
                     <label class="form-label" for="nombreVacuna" >Nombre de la Vacuna</label>    

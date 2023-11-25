@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import mm221162023Veterinariaspring.VetPet.entidades.Vacuna;
 import mm221162023Veterinariaspring.VetPet.servicios.ServicioVacunas;
 import mm221162023Veterinariaspring.VetPet.utilidades.RespuestaEstandard;
+import mm221162023Veterinariaspring.VetPet.utilidades.Validador;
 
 @Controller
 public class VacunaController {
@@ -40,6 +41,13 @@ public class VacunaController {
     public String PostVacuna(Vacuna v, Model model) {
 
         v.setActivo(true);
+
+        if (!Validador.ValidarVacuna(v)) {
+            model.addAttribute("vacuna", v);
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+
+            return "Vacunas/CrearVacuna";
+        }
         sVacunas.CrearVacunas(v);
 
         return "redirect:vacunas";
@@ -64,6 +72,13 @@ public class VacunaController {
 
     @PostMapping("/put-vacuna")
     public String PutVacuna(Vacuna v, Model model) {
+
+        if (!Validador.ValidarVacuna(v)) {
+            model.addAttribute("vacuna", v);
+            model.addAttribute("mensaje", "Todos los campos son requeridos.");
+
+            return "Vacunas/EditarVacuna";
+        }
 
         sVacunas.ActualizarVacunas(v);
 

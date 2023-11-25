@@ -1,2 +1,4 @@
 1,Test,8.2,30.0,3.0,true
 2,Test 2,3.0,20.0,1.0,false
+6,Parvovirus,5.0,20.0,3.0,true
+7,Parvovirus,10.0,15.0,1.0,true
